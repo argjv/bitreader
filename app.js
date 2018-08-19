@@ -51,7 +51,7 @@ const getPaymentCall = function (client) {
   // Set a listener on the bidirectional stream
   const call = client.sendPayment();
   call.on('data', function(payment) {
-    console.log("Payment sent:");
+    console.log("Payment notice:");
     console.log(payment);
   });
   call.on('error', function(err) {
@@ -63,6 +63,36 @@ const getPaymentCall = function (client) {
     console.log("END");
   });
   return call;
+}
+
+/**
+ * Subscribe to LND to receive notifications about invoices.
+ * @param ip
+ * @param port
+ * @param callback To handle the server response, can be an invoice, error or status JSON
+ */
+exports.subscribeToInvoices = function (ip, port, callback) {
+  const client = getClient(ip, port);
+  const call = client.subscribeInvoices({});
+  call.on('data', function(invoice) {
+    console.log("Invoice notice:");
+    console.log(invoice);
+    callback(invoice);
+  })
+    .on('error', function(err) {
+      console.log("Invoice error:" + err.details);
+      console.log(err);
+      callback(err);
+    })
+    .on('end', function() {
+      // The server has finished sending
+      console.log("Invoice END");
+    })
+    .on('status', function(status) {
+      // Process status
+      console.log("Invoice current status" + status);
+      callback(status);
+    });
 }
 
 /**
