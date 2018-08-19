@@ -132,6 +132,27 @@ exports.sendPayment = function (ip, port, amount) {
 }
 
 /**
+ * Creates a new invoice
+ * @param ip
+ * @param port
+ * @param amount to be paid in satoshies
+ * @param memo Invoice description
+ * @param callback to run on the server response
+ */
+exports.generateInvoice = function (ip, port, amount, memo, callback) {
+  const client = getClient(ip, port);
+  var request = {
+    memo: memo,
+    value: amount
+  };
+
+  client.addInvoice(request, function(err, response) {
+    console.log(response);
+    callback(response);
+  });
+}
+
+/**
  * Experimental, send the same amount of Satoshis every 2 seconds.
  * @param amount
  */
