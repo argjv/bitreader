@@ -64,3 +64,4 @@ typings/
 *.pem
 *.cert
 .idea
+.DS_Store
