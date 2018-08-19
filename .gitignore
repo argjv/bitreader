@@ -65,3 +65,4 @@ typings/
 *.cert
 .idea
 .DS_Store
+*.macaroon
