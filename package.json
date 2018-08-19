@@ -1,0 +1,23 @@
+{
+  "name": "bitreader",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/argjv/bitreader.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/argjv/bitreader/issues"
+  },
+  "homepage": "https://github.com/argjv/bitreader#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "grpc": "^1.14.1"
+  }
+}
