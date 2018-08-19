@@ -132,6 +132,25 @@ exports.sendPayment = function (ip, port, amount) {
 }
 
 /**
+ * Search for an invoice by the r hash in the LND database
+ * @param ip
+ * @param port
+ * @param r_hash
+ * @param callback
+ */
+exports.lookupInvoice = function (ip, port, r_hash, callback) {
+  const client = getClient(ip, port);
+  var request = {
+    r_hash: r_hash
+  };
+
+  client.lookupInvoice(request, function(err, response) {
+    console.log(response);
+    callback(response);
+  });
+}
+
+/**
  * Creates a new invoice
  * @param ip
  * @param port
