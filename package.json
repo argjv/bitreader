@@ -17,7 +17,10 @@
   },
   "homepage": "https://github.com/argjv/bitreader#readme",
   "dependencies": {
+    "async": "^2.6.1",
+    "bytebuffer": "^5.0.1",
     "express": "^4.16.3",
-    "grpc": "^1.14.1"
+    "grpc": "^1.14.1",
+    "lodash": "^4.17.10"
   }
 }
